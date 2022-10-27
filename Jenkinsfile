@@ -30,7 +30,7 @@ pipeline {
          }
 	  
     stage ( 'docker container deployment' ){
-       steps {
+       steps{
 	       def docker_run = ' docker run -itd --name webapp prabha442/jenkins-docker-project-1 '
 	       def docker_rm_container = ' docker rm -f webapp '
                def docker_rmi = ' docker rmi -f prabha442/jenkins-docker-project-1 '
