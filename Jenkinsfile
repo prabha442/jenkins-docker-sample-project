@@ -31,14 +31,15 @@ pipeline {
 	  
     stage ( 'docker container deployment' ){
        steps{
-	       def docker_run = ' docker run -itd --name webapp prabha442/jenkins-docker-project-1 '
-	       def docker_rm_container = ' docker rm -f webapp '
-               def docker_rmi = ' docker rmi -f prabha442/jenkins-docker-project-1 '
+	      # def docker_run = ' docker run -itd --name webapp prabha442/jenkins-docker-project-1 '
+	      # def docker_rm_container = ' docker rm -f webapp '
+              # def docker_rmi = ' docker rmi -f prabha442/jenkins-docker-project-1 '
 	       
 	    sshagent(['ssh-agent']) {
-		    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.203 ${docker_rm_container}"
-		    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.203 ${docker_rmi}"
-		    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.203 ${docker_run}"
+		    sh " ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.203 docker run -itd --name webserver -p 9000:80 prabha442/jenkins-docker-project-1 "
+		   # sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.203 ${docker_rm_container}"
+		   # sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.203 ${docker_rmi}"
+		   # sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.34.203 ${docker_run}"
              }
           }
        }
