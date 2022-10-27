@@ -24,7 +24,7 @@ pipeline {
 		sh ' docker image push prabha442/$JOB_NAME:v1.$BUILD_ID '
 		sh ' docker image push prabha442/$JOB_NAME:latest '
 		
-		sh ' docker image rm $JOB_NAME:v1.$BUILD_ID prabha442/$JOB_NAME:v1.BUILD_ID prabha442/$JOB_NAME:latest '
+		sh ' docker image rm $JOB_NAME:v1.$BUILD_ID prabha442/$JOB_NAME:v1.$BUILD_ID prabha442/$JOB_NAME:latest '
                }
             }
          }
